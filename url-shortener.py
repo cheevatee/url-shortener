@@ -3,6 +3,7 @@ import json
 import os.path
 
 app = Flask(__name__)
+app.secret_key = 'abc123'
 
 #print(__name__)
 
