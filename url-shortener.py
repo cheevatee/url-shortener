@@ -33,8 +33,9 @@ def your_url():
         else:
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
+#            f.save('/opt/app-root/src/' + full_name)
 #            f.save('/opt/app-root/src/pictures/' + full_name)
-            f.save('/opt/app-root/src/' + full_name)
+            f.save('/opt/app-root/src/static/user_files/' + full_name)
             urls[request.form['code']] = {'file':full_name}
         
         with open('urls.json','w') as url_file:
@@ -50,8 +51,10 @@ def redirect_to_url(code):
             urls = json.load(urls_file)
             if code in urls.keys():
                 if 'url' in urls[code].keys():
-                    return redirect(urls[code]['url'])           
-  
+                    return redirect(urls[code]['url'])
+                else:
+                    return redirect(url_for('static', filename='user_files/' + urls[code]['file']))
+                      
 if __name__ == '__main__':  # Script executed directly?
 #    app.run(host="0.0.0.0", port=5000, debug=True,use_reloader=True)
      app.run(host="0.0.0.0", port=8080, debug=True,use_reloader=True)
