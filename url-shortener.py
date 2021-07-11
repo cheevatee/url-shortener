@@ -10,7 +10,7 @@ def home():
 
 @app.route('/your-url', methods=['GET','POST'])
 def your_url():
-    return render_template('your_url.html', code=request.from['code'])
+    return render_template('your_url.html', code=request.form['code'])
   
 if __name__ == '__main__':  # Script executed directly?
 #    app.run(host="0.0.0.0", port=5000, debug=True,use_reloader=True)
