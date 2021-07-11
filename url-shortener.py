@@ -8,9 +8,9 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/about')
-def about():
-    return 'This is a url-shortener app.'
+@app.route('/your-url')
+def your_url():
+    return render_template('your_url.html')
   
 if __name__ == '__main__':  # Script executed directly?
 #    app.run(host="0.0.0.0", port=5000, debug=True,use_reloader=True)
