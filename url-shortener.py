@@ -19,7 +19,7 @@ def your_url():
             with open('urls.json') as urls_file:
                 urls = json.load(urls_file)
         
-        if request.request.form['code'] in urls.keys():
+        if request.form['code'] in urls.keys():
             return redirect(url_for('home'))
         
         urls[request.form['code']] = {'url':request.form['url']}
