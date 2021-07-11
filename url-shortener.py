@@ -64,6 +64,11 @@ def page_not_found(error):
 @app.route('/api')
 def session_api():
     return jsonify(list(session.keys()))
+
+@app.route('/session-clear')
+def session_clear():
+    session.clear()
+    return redirect(url_for('home'))
                       
 if __name__ == '__main__':  # Script executed directly?
 #    app.run(host="0.0.0.0", port=5000, debug=True,use_reloader=True)
