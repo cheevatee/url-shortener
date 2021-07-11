@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 import json
 import os.path
 from werkzeug.utils import secure_filename
@@ -53,7 +53,12 @@ def redirect_to_url(code):
                 if 'url' in urls[code].keys():
                     return redirect(urls[code]['url'])
                 else:
-                    return redirect(url_for('static', filename='user_files/' + urls[code]['file']))
+                    return redirect(url_for('static', filename='user_files/' + urls[code]['file']))          
+    return abort(404)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.html'), 404
                       
 if __name__ == '__main__':  # Script executed directly?
 #    app.run(host="0.0.0.0", port=5000, debug=True,use_reloader=True)
