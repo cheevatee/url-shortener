@@ -15,7 +15,7 @@ def your_url():
     if request.method == 'POST':
         urls = {}
         
-        if os.path.exists('url.json'):
+        if os.path.exists('urls.json'):
             with open('urls.json') as urls_file:
                 urls = json.load(urls_file)
         
