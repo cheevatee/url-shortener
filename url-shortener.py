@@ -16,8 +16,8 @@ def your_url():
         urls = {}
         
         if os.path.exists('url.json'):
-            with open('urls.json') as url_file:
-                urls = json.load(url_file)
+            with open('urls.json') as urls_file:
+                urls = json.load(urls_file)
         
         if request.request.form['code'] in urls.keys():
             return redirect(url_for('home'))
