@@ -17,8 +17,8 @@ def your_url():
     if request.method == 'POST':
         urls = {}
         
-        if not os.path.exists('pictures'):
-            os.makedirs('pictures')
+#        if not os.path.exists('pictures'):
+#            os.makedirs('pictures')
         
         if os.path.exists('urls.json'):
             with open('urls.json') as urls_file:
@@ -33,7 +33,8 @@ def your_url():
         else:
             f = request.files['file']
             full_name = request.form['code'] + secure_filename(f.filename)
-            f.save('/opt/app-root/src/pictures/' + full_name)
+#            f.save('/opt/app-root/src/pictures/' + full_name)
+            f.save('/opt/app-root/src/' + full_name)
             urls[request.form['code']] = {'file':full_name}
         
         with open('urls.json','w') as url_file:
